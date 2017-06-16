@@ -1,0 +1,21 @@
+group 'docker-compose-rule-db-parallel'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url "https://dl.bintray.com/palantir/releases" }
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12',
+            'com.palantir.docker.compose:docker-compose-rule-junit4:0.32.0',
+            'mysql:mysql-connector-java:6.0.6'
+}
+
+test {
+    maxParallelForks = 3
+}
