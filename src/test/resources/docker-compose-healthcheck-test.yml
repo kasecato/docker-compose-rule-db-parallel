@@ -10,3 +10,5 @@ services:
       - ./mysql/conf.d:/etc/mysql/conf.d
     ports:
       - "3306"
+    healthcheck:
+      test: mysql --user=root --password=sa --execute "show databases"
